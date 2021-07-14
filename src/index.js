@@ -7,7 +7,7 @@ let taskList = [
     completed: true
   },
   {
-    index: 2,
+    index: 4,
     description: 'Dinner with friends',
     completed: false
   },
@@ -17,13 +17,14 @@ let taskList = [
     completed: true
   },
   {
-    index: 4,
+    index: 2,
     description: 'Jogging',
     completed: false
   },
 ];
 
 const displayTaskList = function(list) {
+  list.sort((a,b) =>  a.index - b.index );
   const ul = document.getElementById('list-id');
   list.forEach( task => { 
     const li = document.createElement('li');
