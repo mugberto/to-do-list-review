@@ -29,12 +29,18 @@ const displayTaskList = function(list) {
   list.forEach( task => { 
     const li = document.createElement('li');
     const checkbox = document.createElement('input');
+    const description = document.createElement('span');
+    li.className = 'row';
     checkbox.type = 'checkbox';
+    description.className = 'task waiting';
+    description.innerHTML = task.description;
     if(task.completed){
       checkbox.setAttribute('checked', 'checked');
+      description.classList.replace('waiting', 'completed');
     }
     li.appendChild(checkbox);
-    li.innerHTML += `<span>${task.description}</span> <i class="fa fa-ellipsis-v"></i>`;
+    li.appendChild(description);
+    li.innerHTML += '<span class="rightmost handle"><i class="fa fa-ellipsis-v"></i></span>';
     ul.appendChild(li);
   });
 }
