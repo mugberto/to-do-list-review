@@ -4,9 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://use.fontawesome.com/f09ac01b76.js"></script>
   <title>To-do list</title>
 </head>
 <body>
-  <h1>To-do list</h1>
+  <div class="container">
+    <h1>Today's To Do</h1>
+    <form>
+      <input type="text" name="task" id="task-id" placeholder="Add to your list">
+      <button type="button"><i class="fa fa-arrow-right"></i></button>
+    </form>
+    <ul>
+      <li><input type="checkbox" name="" id=""> <span class="task">Shopping groceries</span> <i class="fa fa-ellipsis-v"></i></li>
+      <li><input type="checkbox" name="" id=""> <span class="task">Dinner with friends</span> <i class="fa fa-ellipsis-v"></i></li>
+      <li><input type="checkbox" name="" id=""> <span class="task">Finish assignment</span> <i class="fa fa-ellipsis-v"></i></li>
+      <li><input type="checkbox" name="" id=""> <span class="task">laundry</span> <i class="fa fa-ellipsis-v"></i></li>
+    </ul>
+  </div>
 </body>
 </html>
