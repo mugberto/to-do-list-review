@@ -219,3 +219,7 @@ input[type='text']:focus-visible {
 .handle:hover {
   color: #000;
 }
+
+.drop-zone {
+  border: 1px solid #8babbb;
+}

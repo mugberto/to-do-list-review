@@ -1,4 +1,5 @@
 import './style.css';
+import { onDrag, onDragOver, onDragEnter, onDrop } from './dragAndDrop';
 
 const taskList = [
   {
@@ -24,14 +25,23 @@ const taskList = [
 ];
 
 function displayTaskList(list) {
-  list.sort((a, b) => a.index - b.index);
   const ul = document.getElementById('list-id');
+  ul.innerHTML = '';
+  list.sort((a, b) => a.index - b.index);
   list.forEach((task) => {
     const li = document.createElement('li');
     const box = document.createElement('div');
     const checkbox = document.createElement('input');
     const description = document.createElement('span');
+    li.ondragenter = ev => onDragEnter(ev, task.index);
+    li.ondragover = ev => onDragOver(ev);
+    li.ondrop = ev => {
+      onDrop(ev, list);
+      displayTaskList(list);
+    }
     box.className = 'box';
+    box.draggable = true;
+    box.ondragstart = ev => onDrag(ev, task.index)
     checkbox.type = 'checkbox';
     description.className = 'task waiting';
     description.innerHTML = task.description;
