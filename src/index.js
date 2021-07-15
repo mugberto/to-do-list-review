@@ -28,9 +28,10 @@ function displayTaskList(list) {
   const ul = document.getElementById('list-id');
   list.forEach((task) => {
     const li = document.createElement('li');
+    const box = document.createElement('div');
     const checkbox = document.createElement('input');
     const description = document.createElement('span');
-    li.className = 'row';
+    box.className = 'box';
     checkbox.type = 'checkbox';
     description.className = 'task waiting';
     description.innerHTML = task.description;
@@ -38,9 +39,9 @@ function displayTaskList(list) {
       checkbox.setAttribute('checked', 'checked');
       description.classList.replace('waiting', 'completed');
     }
-    li.appendChild(checkbox);
-    li.appendChild(description);
-    li.innerHTML += '<span class="rightmost handle"><i class="fa fa-ellipsis-v"></i></span>';
+    box.appendChild(checkbox);
+    box.appendChild(description);
+    li.appendChild(box);
     ul.appendChild(li);
   });
 }
