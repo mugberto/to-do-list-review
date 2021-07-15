@@ -157,7 +157,7 @@ body {
   transform: translate(-50%, -50%);
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 1px 1px 16px #888;
+  box-shadow: 1px 1px 8px #ccc;
 }
 
 .row, .box {
@@ -211,4 +211,11 @@ input[type='text']:focus-visible {
 
 .handle {
   cursor: move;
+  color: #bbb;
+  font-size: 1.2rem;
+  padding: 0 .1rem 0 1rem;
+}
+
+.handle:hover {
+  color: #000;
 }

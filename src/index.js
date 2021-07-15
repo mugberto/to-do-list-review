@@ -41,6 +41,7 @@ function displayTaskList(list) {
     }
     box.appendChild(checkbox);
     box.appendChild(description);
+    box.innerHTML += '<span class="rightmost handle"><i class="fa fa-ellipsis-v"></i></span>';
     li.appendChild(box);
     ul.appendChild(li);
   });
