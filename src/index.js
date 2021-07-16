@@ -3,6 +3,7 @@ import {
   onDrag, onDragOver, onDragEnter, onDrop,
 } from './dragAndDrop';
 import taskStatus from './taskStatus';
+import TaskList from './taskList';
 
 const sampletaskList = [
   {
@@ -27,12 +28,13 @@ const sampletaskList = [
   },
 ];
 
+const taskList = new TaskList(sampletaskList);
+
 function displayTaskList() {
-  const list = JSON.parse(localStorage.getItem('tasks'));
   const ul = document.getElementById('list-id');
   ul.innerHTML = '';
-  list.sort((a, b) => a.index - b.index);
-  list.forEach((task) => {
+  taskList.list.sort((a, b) => a.index - b.index);
+  taskList.list.forEach((task) => {
     const li = document.createElement('li');
     const box = document.createElement('div');
     const checkbox = document.createElement('input');
@@ -42,8 +44,8 @@ function displayTaskList() {
     li.ondragenter = (ev) => onDragEnter(ev, task.index);
     li.ondragover = (ev) => onDragOver(ev);
     li.ondrop = (ev) => {
-      onDrop(ev, list);
-      displayTaskList(list);
+      onDrop(ev, taskList.list);
+      displayTaskList();
     };
     box.className = 'box';
     box.draggable = true;
@@ -57,7 +59,7 @@ function displayTaskList() {
       description.classList.replace('waiting', 'completed');
     }
     checkbox.addEventListener('change', (ev) => {
-      taskStatus(ev, task.index, list);
+      taskStatus(ev, task.index, taskList.list);
       displayTaskList();
     });
     box.appendChild(checkbox);
@@ -67,6 +69,16 @@ function displayTaskList() {
     ul.appendChild(li);
   });
 }
+
+const taskInput = document.getElementById('task-add-id');
+const taskSubmitBtn = document.getElementById('task-submit')
+taskInput.onkeyup = taskSubmitBtn.onclick = (ev) => {
+  if(ev.key === 'Enter' || ev.type === 'click'){
+    taskList.add(taskInput.value);
+    displayTaskList();
+    taskInput.value = '';
+  }
+};
 
 if (localStorage.getItem('tasks') === null) {
   localStorage.setItem('tasks', JSON.stringify(sampletaskList));

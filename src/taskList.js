@@ -7,7 +7,7 @@ export default class TaskList {
     }
   }
   add(description){
-    this.list = this.list.concat({index: this.list.length, description, completed: false });
+    this.list = this.list.concat({index: this.list.length + 1, description, completed: false });
     localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 }
