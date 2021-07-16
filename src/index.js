@@ -58,10 +58,10 @@ function displayTaskList() {
       checkbox.setAttribute('checked', 'checked');
       description.classList.replace('waiting', 'completed');
     }
-    checkbox.addEventListener('change', (ev) => {
+    checkbox.onchange = (ev) => {
       taskStatus(ev, task.index, taskList.list);
       displayTaskList();
-    });
+    };
     box.appendChild(checkbox);
     box.appendChild(description);
     box.appendChild(handle);
@@ -71,10 +71,10 @@ function displayTaskList() {
 }
 
 const taskInput = document.getElementById('task-add-id');
-const taskSubmitBtn = document.getElementById('task-submit')
+const taskSubmitBtn = document.getElementById('task-submit');
 taskInput.onkeyup = taskSubmitBtn.onclick = (ev) => {
-  if(ev.key === 'Enter' || ev.type === 'click'){
-    taskList.add(taskInput.value);
+  if (ev.key === 'Enter' || ev.type === 'click') {
+    taskList.create(taskInput.value);
     displayTaskList();
     taskInput.value = '';
   }
