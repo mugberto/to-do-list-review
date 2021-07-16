@@ -1,5 +1,8 @@
 import './style.css';
-import { onDrag, onDragOver, onDragEnter, onDrop } from './dragAndDrop';
+import {
+  onDrag, onDragOver, onDragEnter, onDrop,
+} from './dragAndDrop';
+import taskStatus from './taskStatus';
 
 const taskList = [
   {
@@ -33,25 +36,29 @@ function displayTaskList(list) {
     const box = document.createElement('div');
     const checkbox = document.createElement('input');
     const description = document.createElement('span');
-    li.ondragenter = ev => onDragEnter(ev, task.index);
-    li.ondragover = ev => onDragOver(ev);
-    li.ondrop = ev => {
+    const handle = document.createElement('span')
+    checkbox.type = 'checkbox';
+    li.ondragenter = (ev) => onDragEnter(ev, task.index);
+    li.ondragover = (ev) => onDragOver(ev);
+    li.ondrop = (ev) => {
       onDrop(ev, list);
       displayTaskList(list);
-    }
+    };
     box.className = 'box';
     box.draggable = true;
-    box.ondragstart = ev => onDrag(ev, task.index)
-    checkbox.type = 'checkbox';
+    box.ondragstart = (ev) => onDrag(ev, task.index);
     description.className = 'task waiting';
     description.innerHTML = task.description;
+    handle.className = 'rightmost handle';
+    handle.innerHTML = '<i class="fa fa-ellipsis-v"></i>';
     if (task.completed) {
       checkbox.setAttribute('checked', 'checked');
       description.classList.replace('waiting', 'completed');
     }
+    checkbox.addEventListener('change', (ev) => taskStatus(ev));
     box.appendChild(checkbox);
     box.appendChild(description);
-    box.innerHTML += '<span class="rightmost handle"><i class="fa fa-ellipsis-v"></i></span>';
+    box.appendChild(handle);
     li.appendChild(box);
     ul.appendChild(li);
   });
