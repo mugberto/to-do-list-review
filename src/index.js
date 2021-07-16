@@ -57,7 +57,6 @@ function displayTaskList() {
       description.classList.replace('waiting', 'completed');
     }
     checkbox.addEventListener('change', (ev) => {
-      console.log(list);
       taskStatus(ev, task.index, list);
       displayTaskList();
     });

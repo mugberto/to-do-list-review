@@ -3,7 +3,6 @@ let taskToMove = {};
 export function onDrag(ev, index) {
   taskToMove = {};
   taskToMove.dragIndex = index;
-  console.log(`Moving item ${taskToMove.dragIndex}`);
 }
 
 export function onDragEnter(ev, index) {
@@ -39,5 +38,4 @@ export function onDrop(ev, list) {
     });
   }
   localStorage.setItem('tasks', JSON.stringify(list.concat(movingTask)));
-  
 }
