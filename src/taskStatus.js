@@ -1,4 +1,4 @@
-export function taskStatus(ev, index, list) {
+export default function taskStatus(ev, index, list) {
   list = list.map((task) => {
     if (task.index === index) {
       task.completed = ev.target.checked;

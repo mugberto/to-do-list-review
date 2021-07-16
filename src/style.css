@@ -160,7 +160,8 @@ body {
   box-shadow: 1px 1px 8px #ccc;
 }
 
-.row, .box {
+.row,
+.box {
   background-color: #fff;
   padding: 1rem;
   border-bottom: 1px solid #ccc;
@@ -213,7 +214,7 @@ input[type='text']:focus-visible {
   cursor: move;
   color: #bbb;
   font-size: 1.2rem;
-  padding: 0 .1rem 0 1rem;
+  padding: 0 0.1rem 0 1rem;
 }
 
 .handle:hover {

@@ -2,7 +2,7 @@ import './style.css';
 import {
   onDrag, onDragOver, onDragEnter, onDrop,
 } from './dragAndDrop';
-import { taskStatus } from './taskStatus';
+import taskStatus from './taskStatus';
 
 const sampletaskList = [
   {

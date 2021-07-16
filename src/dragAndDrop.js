@@ -8,7 +8,7 @@ export function onDrag(ev, index) {
 export function onDragEnter(ev, index) {
   ev.preventDefault();
   const zones = document.getElementsByClassName('box');
-  for (let i = 0; i < zones.length; i++) {
+  for (let i = 0; i < zones.length; i += 1) {
     zones[i].classList.remove('drop-zone');
   }
   zones[index - 1].classList.add('drop-zone');
@@ -27,13 +27,13 @@ export function onDrop(ev, list) {
   if (taskToMove.dragIndex < taskToMove.dropIndex) {
     list.forEach((task) => {
       if (task.index > taskToMove.dragIndex && task.index <= taskToMove.dropIndex) {
-        task.index--;
+        task.index -= 1;
       }
     });
   } else if (taskToMove.dragIndex > taskToMove.dropIndex) {
     list.forEach((task) => {
       if (task.index < taskToMove.dragIndex && task.index >= taskToMove.dropIndex) {
-        task.index++;
+        task.index += 1;
       }
     });
   }
