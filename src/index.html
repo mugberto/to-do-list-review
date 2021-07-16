@@ -10,8 +10,8 @@
 <body>
   <div class="container">
     <h1 class="row">Today's To Do</h1>
-    <form class="row">
-      <input type="text" name="task" id="task-add-id" placeholder="Add to your list...">
+    <form class="row" id="task-add-id" onsubmit="return false">
+      <input type="text" name="task" placeholder="Add to your list...">
       <button type="button" class="rightmost submit-task"><i class="fa fa-arrow-right"></i></button>
     </form>
     <ul id="list-id"></ul>
