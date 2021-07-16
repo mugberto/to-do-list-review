@@ -1,8 +1,6 @@
 import './style.css';
-import {
-  onDrag, onDragOver, onDragEnter, onDrop,
-} from './dragAndDrop';
-import taskStatus from './taskStatus';
+import { onDrag, onDragOver, onDragEnter, onDrop } from './dragAndDrop';
+import { taskStatus } from './taskStatus';
 
 const taskList = [
   {
@@ -55,7 +53,10 @@ function displayTaskList(list) {
       checkbox.setAttribute('checked', 'checked');
       description.classList.replace('waiting', 'completed');
     }
-    checkbox.addEventListener('change', (ev) => taskStatus(ev));
+    checkbox.addEventListener('change', (ev) => {
+      taskStatus(ev, task.index, list);
+      displayTaskList(list);
+    });
     box.appendChild(checkbox);
     box.appendChild(description);
     box.appendChild(handle);
