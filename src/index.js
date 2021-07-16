@@ -1,8 +1,10 @@
 import './style.css';
-import { onDrag, onDragOver, onDragEnter, onDrop } from './dragAndDrop';
+import {
+  onDrag, onDragOver, onDragEnter, onDrop,
+} from './dragAndDrop';
 import { taskStatus } from './taskStatus';
 
-const taskList = [
+const sampletaskList = [
   {
     index: 1,
     description: 'Shopping groceries',
@@ -25,7 +27,8 @@ const taskList = [
   },
 ];
 
-function displayTaskList(list) {
+function displayTaskList() {
+  const list = JSON.parse(localStorage.getItem('tasks'));
   const ul = document.getElementById('list-id');
   ul.innerHTML = '';
   list.sort((a, b) => a.index - b.index);
@@ -34,7 +37,7 @@ function displayTaskList(list) {
     const box = document.createElement('div');
     const checkbox = document.createElement('input');
     const description = document.createElement('span');
-    const handle = document.createElement('span')
+    const handle = document.createElement('span');
     checkbox.type = 'checkbox';
     li.ondragenter = (ev) => onDragEnter(ev, task.index);
     li.ondragover = (ev) => onDragOver(ev);
@@ -54,8 +57,9 @@ function displayTaskList(list) {
       description.classList.replace('waiting', 'completed');
     }
     checkbox.addEventListener('change', (ev) => {
+      console.log(list);
       taskStatus(ev, task.index, list);
-      displayTaskList(list);
+      displayTaskList();
     });
     box.appendChild(checkbox);
     box.appendChild(description);
@@ -65,4 +69,8 @@ function displayTaskList(list) {
   });
 }
 
-displayTaskList(taskList);
+if (localStorage.getItem('tasks') === null) {
+  localStorage.setItem('tasks', JSON.stringify(sampletaskList));
+}
+
+displayTaskList();

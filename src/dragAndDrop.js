@@ -38,6 +38,6 @@ export function onDrop(ev, list) {
       }
     });
   }
-  list = list.concat(movingTask);
-  console.log(list);
+  localStorage.setItem('tasks', JSON.stringify(list.concat(movingTask)));
+  
 }
