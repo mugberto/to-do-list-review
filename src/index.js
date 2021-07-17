@@ -1,12 +1,15 @@
 import './style.css';
 import {
-  onDrag, onDragOver, onDragEnter, onDrop,
+  onDrag,
+  onDragOver,
+  onDragEnter,
+  onDrop,
 } from './dragAndDrop';
 import taskStatus from './taskStatus';
 import TaskList from './taskList';
+import EditForm from './form';
 
-const sampletaskList = [
-  {
+const sampletaskList = [{
     index: 1,
     description: 'Shopping groceries',
     completed: true,
@@ -29,17 +32,7 @@ const sampletaskList = [
 ];
 
 const taskList = new TaskList(sampletaskList);
-
-const descriptionEditForm = (ev, index) => {
-  const block = ev.target.parentNode;
-  const descriptionElement = ev.target;
-  const taskEditInput = document.createElement('input');
-  taskEditInput.type = 'text';
-  taskEditInput.className = 'edit-input';
-  taskEditInput.value = taskList.edit(index);
-  block.replaceChild(taskEditInput, descriptionElement);
-  taskEditInput.focus();
-};
+const editForm = new EditForm(taskList);
 
 function displayTaskList() {
   const ul = document.getElementById('list-id');
@@ -73,7 +66,7 @@ function displayTaskList() {
       taskStatus(ev, task.index, taskList.list);
       displayTaskList();
     };
-    description.onclick = (ev) => descriptionEditForm(ev, task.index);
+    description.onclick = () => editForm.render(description, task.index, displayTaskList);
     box.appendChild(checkbox);
     box.appendChild(description);
     box.appendChild(handle);

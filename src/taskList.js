@@ -18,10 +18,11 @@ export default class TaskList {
 
   update(description, index) {
     this.list = this.list.map((task) => {
-      if(task.index === index) {
+      if (task.index === index) {
         task.description = description;
       }
       return task;
     });
+    localStorage.setItem('tasks', JSON.stringify(this.list));
   }
 }
