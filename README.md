@@ -1,5 +1,14 @@
 # To-Do List
-To-Do List is an app that list tasks to be done.
+This is minimalist To-Do app. It allows the user to stay organized by offering the following possibilies:
+- Possibility to create a list of tasks 
+- Possibility to mark them as completed
+- Possibility to remove a task
+- Possibility to re-order tasks
+- Possibility to remove all completed tasks
+
+## Screenshot
+
+![Screenshot](./To-do-list.png)
 
 ## Built With
 
