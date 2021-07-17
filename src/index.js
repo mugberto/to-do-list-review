@@ -4,10 +4,10 @@ import {
   onDragOver,
   onDragEnter,
   onDrop,
-} from './dragAndDrop';
-import taskStatus from './taskStatus';
-import TaskList from './taskList';
-import EditForm from './form';
+} from './dragAndDrop.js';
+import taskStatus from './taskStatus.js';
+import TaskList from './taskList.js';
+import EditForm from './form.js';
 
 const taskList = new TaskList([]);
 const editForm = new EditForm(taskList);
