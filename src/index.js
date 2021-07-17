@@ -9,32 +9,10 @@ import taskStatus from './taskStatus';
 import TaskList from './taskList';
 import EditForm from './form';
 
-const sampletaskList = [{
-  index: 1,
-  description: 'Shopping groceries',
-  completed: true,
-},
-{
-  index: 4,
-  description: 'Dinner with friends',
-  completed: false,
-},
-{
-  index: 3,
-  description: 'Finish assignment',
-  completed: true,
-},
-{
-  index: 2,
-  description: 'Jogging',
-  completed: false,
-},
-];
-
-const taskList = new TaskList(sampletaskList);
+const taskList = new TaskList([]);
 const editForm = new EditForm(taskList);
 
-function displayTaskList() {
+const displayTaskList = () => {
   const ul = document.getElementById('list-id');
   ul.innerHTML = '';
   taskList.list.sort((a, b) => a.index - b.index);
@@ -73,20 +51,30 @@ function displayTaskList() {
     li.appendChild(box);
     ul.appendChild(li);
   });
-}
+};
 
 const taskInput = document.getElementById('task-add-id');
-const taskSubmitBtn = document.getElementById('task-submit');
-taskInput.onkeyup = taskSubmitBtn.onclick = (ev) => {
-  if (ev.key === 'Enter' || ev.type === 'click') {
+taskInput.onkeyup = (ev) => {
+  if (ev.key === 'Enter') {
     taskList.create(taskInput.value);
     displayTaskList();
     taskInput.value = '';
   }
 };
 
-if (localStorage.getItem('tasks') === null) {
-  localStorage.setItem('tasks', JSON.stringify(sampletaskList));
-}
+const taskSubmitBtn = document.getElementById('task-submit');
+taskSubmitBtn.onclick = (ev) => {
+  if (ev.type === 'click') {
+    taskList.create(taskInput.value);
+    displayTaskList();
+    taskInput.value = '';
+  }
+};
+
+const clearAllCompletedBtn = document.getElementById('clear-btn-id');
+clearAllCompletedBtn.onclick = () => {
+  taskList.deleteAllCompleted();
+  displayTaskList();
+};
 
 displayTaskList();

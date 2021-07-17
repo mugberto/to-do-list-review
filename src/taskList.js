@@ -36,4 +36,14 @@ export default class TaskList {
     });
     localStorage.setItem('tasks', JSON.stringify(this.list));
   }
+
+  deleteAllCompleted() {
+    this.list = this.list.filter((task) => task.completed !== true);
+    let i = 1;
+    this.list.forEach((task) => {
+      task.index = i;
+      i += 1;
+    });
+    localStorage.setItem('tasks', JSON.stringify(this.list));
+  }
 }

@@ -17,14 +17,14 @@ export default class EditForm {
     block.replaceChild(this.input, descrElement);
     block.replaceChild(this.trash, this.input.nextElementSibling);
     this.input.focus();
-    this.trash.onmouseenter = (ev) => {
+    this.trash.onmouseenter = () => {
       commit = false;
       this.input.blur();
-    }
-    this.trash.onmouseleave = (ev) => {
+    };
+    this.trash.onmouseleave = () => {
       commit = true;
       this.input.focus();
-    }
+    };
 
     this.trash.onclick = () => {
       this.taskList.delete(index);
