@@ -10,25 +10,25 @@ import TaskList from './taskList';
 import EditForm from './form';
 
 const sampletaskList = [{
-    index: 1,
-    description: 'Shopping groceries',
-    completed: true,
-  },
-  {
-    index: 4,
-    description: 'Dinner with friends',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'Finish assignment',
-    completed: true,
-  },
-  {
-    index: 2,
-    description: 'Jogging',
-    completed: false,
-  },
+  index: 1,
+  description: 'Shopping groceries',
+  completed: true,
+},
+{
+  index: 4,
+  description: 'Dinner with friends',
+  completed: false,
+},
+{
+  index: 3,
+  description: 'Finish assignment',
+  completed: true,
+},
+{
+  index: 2,
+  description: 'Jogging',
+  completed: false,
+},
 ];
 
 const taskList = new TaskList(sampletaskList);

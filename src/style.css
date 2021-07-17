@@ -196,7 +196,7 @@ input[type='text']:focus-visible {
   cursor: pointer;
 }
 
-.submit-task {
+.submit-task, .trash {
   cursor: pointer;
   background-color: #f6f6f6;
   padding: 2px 6px;
