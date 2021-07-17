@@ -30,6 +30,17 @@ const sampletaskList = [
 
 const taskList = new TaskList(sampletaskList);
 
+const descriptionEditForm = (ev, index) => {
+  const block = ev.target.parentNode;
+  const descriptionElement = ev.target;
+  const taskEditInput = document.createElement('input');
+  taskEditInput.type = 'text';
+  taskEditInput.className = 'edit-input';
+  taskEditInput.value = taskList.edit(index);
+  block.replaceChild(taskEditInput, descriptionElement);
+  taskEditInput.focus();
+};
+
 function displayTaskList() {
   const ul = document.getElementById('list-id');
   ul.innerHTML = '';
@@ -62,6 +73,7 @@ function displayTaskList() {
       taskStatus(ev, task.index, taskList.list);
       displayTaskList();
     };
+    description.onclick = (ev) => descriptionEditForm(ev, task.index);
     box.appendChild(checkbox);
     box.appendChild(description);
     box.appendChild(handle);

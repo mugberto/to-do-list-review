@@ -167,7 +167,7 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
-input[type='text'] {
+.create-input, .edit-input {
   background-color: #0000;
   width: calc(100% - 23.5px);
   border: none;
@@ -176,6 +176,12 @@ input[type='text'] {
 
 input[type='text']:focus-visible {
   outline: none;
+}
+
+.edit-input {
+  margin-left: 1rem;
+  width: 70%;
+  color: #666;
 }
 
 .clear-btn {
