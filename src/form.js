@@ -1,15 +1,8 @@
 export default class EditForm {
   constructor(taskList) {
     this.taskList = taskList;
-    this.index = null;
-    this.element = null;
   }
-
-  submit(description) {
-    this.taskList.update(description, this.index);
-    this.element = null;
-  }
-
+  
   render(descrElement, index, refresh) {
     this.index = index;
     this.element = document.createElement('input');
@@ -20,12 +13,12 @@ export default class EditForm {
     this.element.focus();
     this.element.onkeyup = (ev) => {
       if (ev.key === 'Enter') {
-        this.submit(ev.target.value);
+        this.taskList.update(ev.target.value, index);
         refresh();
       }
     };
     this.element.onblur = (ev) => {
-      this.submit(ev.target.value);
+      this.taskList.update(ev.target.value, index);
       refresh();
     }
   }
