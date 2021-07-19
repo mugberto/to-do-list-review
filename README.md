@@ -10,6 +10,10 @@ This is minimalist To-Do app. It allows the user to stay organized by offering t
 
 ![Screenshot](./To-do-list.png)
 
+## Live demo
+
+Click [here](https://mugberto.github.io/to-do-list/) to view
+
 ## Built With
 
 - HTML
