@@ -19,6 +19,7 @@
     "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
+    "hint": "^6.1.4",
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
